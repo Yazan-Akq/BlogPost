@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+
+{% block content %}
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title></title>
+	</head>
+	<body>
+
+	{% for field in form %}
+		{% if field.errors %}
+			<div class="alert alert-danger alert-dismissible fade show" role="alert">
+	  			{{ field.errors }}
+	  		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+	   		 <span aria-hidden="true">&times;</span>
+	 		</button>
+			</div>
+		{% endif %}
+	{% endfor %}
+	
+		<h1 class="text-center">Edit Profile...</h1>
+		<hr>
+		<br>
+<div class="col-md-6 offset-md-3">				
+	<form method="POST" action="{% url 'Edit_Profile' %}">
+		{% csrf_token %}
+
+		{{ form.as_p }}
+
+		<a style="color: black;" href="{% url 'edit_password' %}"><h6>Change Password</h6></a>	
+		<br>
+		<input type="submit" value="Edit Profile" class="btn btn-secondary">
+		
+	</form>	
+	</body>
+	</html>
+
+
+{% endblock %}

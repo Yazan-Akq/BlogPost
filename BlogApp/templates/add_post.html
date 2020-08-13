@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+{% if user.is_authenticated %}		
+	<title>{% block title %}
+     BlogPost | AddPost
+    {% endblock %}</title>
+</head>
+<body>
+
+	<h1 class="text-center">Add Post...</h1>
+	<hr>
+<div class="col-md-7 offset-md-3" class="form-group">
+	<form method="POST">
+		{% csrf_token %}
+			{{ form.as_p }}
+		<button class="btn btn-secondary">Add Post</button>	
+	</form>
+</div>
+	<script type="text/javascript">
+		var name ="{{ user.id }}";
+		document.getElementById("yazan").value =
+		name;
+	</script>
+</body>
+</html>
+{% else %}
+	<div class="alert alert-danger" role="alert">
+  You Are Not Allowed To Be Here | <small><a href="{% url 'home' %}"> Go Back</a></small>
+	</div>
+{% endif %}
+{% endblock %}
