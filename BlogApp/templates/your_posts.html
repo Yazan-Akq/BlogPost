@@ -8,6 +8,7 @@
      BlogPost | Your-Posts
     {% endblock %}</title>
 </head>
+{% if user.is_authenticated %}
 <body>
 <h1 class="text-center">Your Posts...</h1>
 <hr>
@@ -35,6 +36,11 @@
 		{% endif %}
 	{% endfor %}
 {% endif %}	
+{% else %}
+<div class="alert alert-danger" role="alert">
+  You Are Not Allowed To Be Here | <small><a href="{% url 'home' %}"> Go Back</a></small>
+	</div>
+{% endif %}
 </body>
 </html>
 
