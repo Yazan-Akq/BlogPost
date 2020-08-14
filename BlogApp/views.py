@@ -30,3 +30,8 @@ class EditView(UpdateView):
 	template_name = 'edit.html'
 	#fields = ('title', 'page_title', 'body',)
 
+def your_posts(request):
+	form = List.objects.all()
+	context = {'form':form}
+	return render(request, 'your_posts.html', context)
+	ordering = ['-id']
