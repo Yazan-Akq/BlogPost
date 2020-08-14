@@ -5,7 +5,7 @@ from .forms import ListForm, EditForm
 from django.contrib import messages
 
 def home(request):
-	form = List.objects.all()
+	form = List.objects.all().order_by('-id')
 	context = {'form':form}
 	return render(request, 'home.html', context)
 
@@ -31,7 +31,7 @@ class EditView(UpdateView):
 	#fields = ('title', 'page_title', 'body',)
 
 def your_posts(request):
-	form = List.objects.all()
+	form = List.objects.all().order_by('-id')
 	context = {'form':form}
 	return render(request, 'your_posts.html', context)
-	ordering = ['-id']
+
