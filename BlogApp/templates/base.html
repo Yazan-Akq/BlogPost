@@ -32,13 +32,18 @@
         <a class="nav-link" href="{% url 'your_posts' %}">Your Posts<span class="sr-only">(current)</span></a>
       </li>
     </ul>
-    <ul class="navbar-nav ml-auto">  
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'Edit_Profile' %}">Edit Profile</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{% url 'logout_user' %}">Logout</a>
-      </li>
+    <ul class="navbar-nav ml-auto"> 
+       <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          {{ user.first_name }}    
+           {{ user.last_name }}
+        </a>
+        <div class="dropdown-menu dropdown-menu-right " aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'Edit_Profile' %}">Edit Profile</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logout_user' %}">Logout</a>
+        </div>
+      </li> 
     </ul>  
     {% else %}
       <ul class="navbar-nav ml-auto">      
