@@ -22,6 +22,7 @@ class PostDetialView(DetailView):
 def delete(request, list_id):
 	form = List.objects.get(pk=list_id)
 	form.delete()	
+	messages.success(request, ('Post Has Been Deleted...'))
 	return redirect('home')
 
 class EditView(UpdateView):
