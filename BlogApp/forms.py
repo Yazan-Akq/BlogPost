@@ -1,5 +1,5 @@
 from django import forms
-from .models import List
+from .models import List, Comment
 
 class ListForm(forms.ModelForm):
 	class Meta:
@@ -23,4 +23,18 @@ class EditForm(forms.ModelForm):
 			'title': forms.TextInput(attrs={'class':'form-control'}),
 			'page_title': forms.TextInput(attrs={'class':'form-control'}),
 			'body': forms.Textarea(attrs={'class':'form-control'}),
-		}		
+		}
+
+class CommentForm(forms.ModelForm):
+	class Meta:
+		model = Comment
+		fields = ('name','body',)
+
+
+
+		widgets = {
+			'name': forms.TextInput(attrs={'class':'form-control', 'value':'', 'id':'yazanakq', 'type':'hidden'}),
+			'body': forms.Textarea(attrs={'class':'form-control', 'placeholder':'Type Your Comment....','label':'' })
+		}	
+
+	

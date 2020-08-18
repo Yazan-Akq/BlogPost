@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% if user.is_authenticated %}
+	<h1 class="text-center">Add Comment...</h1>
+	<hr>
+
+	<form method="POST" >
+	{% csrf_token %}
+	{{ form.as_p }}
+		
+	<button class="btn btn-secondary btn-sm">Comment</button>	
+
+	</form>
+	<script type="text/javascript">
+		var name ="{{ user.first_name }} {{ user.last_name }}";
+		document.getElementById("yazanakq").value =		name;
+	</script>
+{% endif %}		
+{% endblock %}

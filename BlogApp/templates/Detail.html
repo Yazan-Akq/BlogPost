@@ -30,8 +30,43 @@
         <a class="btn btn-secondary" href="{% url 'home' %}">Back</a>
       </div>
     </div>
+    <br>
+    <br>
+    <br>
 
-	
+<div class="col-md-9 ">  
+<strong><h6>Comments...</h6></strong>
+</div>
+<hr>
+<br>
+  {% if not list.comments.all %}
+<div class="col-md-9 offset-md-0">
+No Comments Yet... <br>  
+</div>
+  {% else %}
+    <div class="col-md-9 offset-md-1">
+      {% for comment in list.comments.all %}
+      <strong>{{ comment.name }}</strong>
+      <small style="float: right;">({{ comment.date_added }})</small>
+      <br>
+      <br>
+      {{ comment.body | linebreaks }}
+      <hr>
+    {% endfor %}
+  {% endif %}  
+{% if user.is_authenticated %}    
+    <div class="col-md-9">
+    <a style="color: grey;" href="{% url 'add_comment' list.pk %}">Add Comment</a> 
+  </div>  
+{% else %}
+<small>
+  You Have To Be Logged In To Comment | <a href="{% url 'login_user' %}">Login Here</a>  
+</small>   
+{% endif %} 
+</div> 
+</div>  
+<br> 
+<br>
 </body>
 </html>
 {% endblock %}

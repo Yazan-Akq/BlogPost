@@ -1,8 +1,9 @@
-from django.shortcuts import render, redirect
-from .models import List
+from django.shortcuts import render, redirect, get_object_or_404
+from .models import List,Comment
 from django.views.generic import CreateView, UpdateView, DetailView
-from .forms import ListForm, EditForm
+from .forms import ListForm, EditForm, CommentForm
 from django.contrib import messages
+from django.urls import reverse_lazy
 
 def home(request):
 	form = List.objects.all().order_by('-id')
@@ -36,3 +37,11 @@ def your_posts(request):
 	context = {'form':form}
 	return render(request, 'your_posts.html', context)
 
+class CommentView(CreateView):
+	model = Comment
+	form_class = CommentForm
+	template_name = 'add_comment.html'
+	#fields = '__all__'
+	def form_valid(self, form):
+		form.instance.post_id = self.kwargs['pk']
+		return super().form_valid(form)
