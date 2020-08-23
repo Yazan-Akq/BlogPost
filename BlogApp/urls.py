@@ -10,4 +10,18 @@ urlpatterns = [
     path('edit/<int:pk>', EditView.as_view(), name = 'edit'),
     path('your_posts/', views.your_posts, name='your_posts'),
 	path('PostDetail/Comment/<int:pk>', CommentView.as_view(), name='add_comment'),
-]	
+	path('About/', views.about, name='about'),
+	path('Contact/', views.contact, name='contact'),
+
+
+
+
+
+
+
+
+
+
+
+
+]

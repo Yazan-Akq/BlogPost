@@ -4,6 +4,8 @@ from django.views.generic import CreateView, UpdateView, DetailView
 from .forms import ListForm, EditForm, CommentForm
 from django.contrib import messages
 from django.urls import reverse_lazy
+from django.core.mail import send_mail
+from django.conf import settings
 
 def home(request):
 	form = List.objects.all().order_by('-id')
@@ -45,3 +47,27 @@ class CommentView(CreateView):
 	def form_valid(self, form):
 		form.instance.post_id = self.kwargs['pk']
 		return super().form_valid(form)
+
+def about(request):
+	return render(request, 'about.html')	
+
+def contact(request):
+	if request.method == 'POST':
+		message_name = request.POST.get('message-name')
+		message_email = request.POST.get('message-email')
+		message = request.POST.get('message')
+
+		send_mail(
+			'message from ' + message_name,
+			message,
+			message_email,
+			['yazanakq@gmail.com'],
+		)
+
+		return render(request, 'contact.html', {'message_name':message_name})	
+
+
+
+
+	else:	
+		return render(request, 'contact.html')			

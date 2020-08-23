@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+  <h1 class="text-center">Get In Touch</h1>
+  <hr>
+{% if message_name %}
+  <center>
+    <br><br>
+    <h2>Thanks {{ message_name }}</h2>
+    <p>we recieved your email and will respond shortly...</p>
+    <br><br><br>
+  </center>
+{% else %}    
+<p class="text-center">We'll answer your email as soon as we can!</p>
+<br>
+<div class="col-md-10 offset-md-1">
+  <div class="card">
+  <div class="card-body">
+    <br>
+  <center>  
+    <form action="{% url 'contact' %}" method="POST">
+      {% csrf_token %}
+      <div class="md-form">
+        <i class="fas fa-user prefix grey-text"></i>
+        <input type="text" id="form-name" class="form-control" placeholder="Your Name" name="message-name">
+      </div>
+      <br>
+      <div class="md-form">
+      <i class="fas fa-envelope prefix grey-text"></i>
+      <input type="email" id="form-email" class="form-control" placeholder="Your Email" name="message-email">
+      </div>
+      <br>
+      <div class="md-form">
+        <i class="fas fa-tag prefix grey-text"></i>
+          <input type="text" id="form-Subject" class="form-control" placeholder="Your Message" name="message">
+      </div>
+        <br>
+      <div class="text-center mt-4">
+          <button class="btn btn-secondary">Send Message</button>
+      </div>
+    </form>
+  </center> 
+  </div>
+  </div> 
+</div>  
+{% endif %}
+</body>
+</html>
+
+{% endblock %}
