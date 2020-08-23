@@ -58,7 +58,7 @@ def contact(request):
 		message = request.POST.get('message')
 
 		send_mail(
-			'message from ' + message_name,
+			'message from ' + message_name + ' |email| ' + message_email,
 			message,
 			message_email,
 			['yazanakq@gmail.com'],
