@@ -58,15 +58,16 @@ def contact(request):
 		message = request.POST.get('message')
 
 		send_mail(
-			'message from ' + message_name + ' Email '+ message_email,
+			'message from ' + message_name,
 			message,
 			message_email,
 			['yazanakq@gmail.com'],
-			fail_silently=False,
 		)
 
 		return render(request, 'contact.html', {'message_name':message_name})	
 
 
+
+
 	else:	
-		return render(request, 'contact.html')			
+		return render(request, 'contact.html')	
