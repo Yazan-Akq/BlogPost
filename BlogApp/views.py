@@ -53,9 +53,9 @@ def about(request):
 
 def contact(request):
 	if request.method == 'POST':
-		message_name = request.POST.get('message-name')
-		message_email = request.POST.get('message-email')
-		message = request.POST.get('message')
+		message_name = request.POST['message-name']
+		message_email = request.POST['message-email']
+		message = request.POST['message']
 
 		send_mail(
 			'message from ' + message_name,
