@@ -18,9 +18,12 @@ class AddPostView(CreateView):
 	template_name = 'add_post.html'
 	#fields = ('title', 'page_title', 'author', 'body',)
 
-class PostDetialView(DetailView):
-	model = List
-	template_name = 'Detail.html'
+def PostDetailView(request, pk):
+    model = List.objects.get(pk=pk)
+    context = {
+        'model': model
+    }
+    return render(request, 'Detail.html', context)
 
 def delete(request, list_id):
 	form = List.objects.get(pk=list_id)
