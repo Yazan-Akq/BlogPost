@@ -4,7 +4,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>{% block title %}
+  <title>{% block title %}
      {{ list.page_title }}
     {% endblock %}</title>
 </head>
@@ -16,11 +16,11 @@
         <h2 class="text-center" class="card-title">{{ list.title }}</h2>
         <br>
         <small>By : <strong>{{ list.author.first_name }}  {{ list.author.last_name }}</strong>
-         - 	 {{ list.Post_date }}</small>
+         -   {{ list.Post_date }}</small>
       {% if user.is_authenticated %}
         {% if user.id == list.author.id %}   
          <a style="margin-top: 2px; margin-left: 10px;" class="btn btn-danger btn-sm " href="{% url 'delete' list.id %}">Delete</a>
-		<a style="margin-top: 2px;" class="btn btn-primary btn-sm " href="{% url 'edit' list.pk %}">Edit</a>
+    <a style="margin-top: 2px;" class="btn btn-primary btn-sm " href="{% url 'edit' list.pk %}">Edit</a>
         {% endif %}
       {% endif %}    
         <hr>
