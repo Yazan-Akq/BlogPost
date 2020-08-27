@@ -168,15 +168,28 @@
         <hr>
         <a style="color: #888888" href="{% url 'Edit_Profile' %}">Edit Profile</a>
         <hr>
-        <a style="color: #888888" href="{% url 'logout_user' %}">Logout</a>
+        <a  href="{% url 'logout_user' %}">Logout</a>
         <hr>
-      </div>  
+      </div>
     {% else %}
-      <div style="color: white; margin-right: 20px;" class="column">
-        <h6>Useful Links</h6>
-        <hr>
-        <a style="color: #888888; margin-right: 20px;" href="{% url 'register' %}">Register</a>
-        <hr>
+        <div style="color: white; margin-right: 20px;" class="column">
+          <center>
+          <svg width="2em" height="2em" viewBox="0 0 16 16" class="bi bi-geo-alt" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+        </svg>
+        <p style="color: white; margin-top: 20px;">Amman, Jordan</p>
+      </center>
+      <hr>
+
+
+        <svg width="2 em" height="2em" viewBox="0 0 16 16" class="bi bi-envelope" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" d="M0 4a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V4zm2-1a1 1 0 0 0-1 1v.217l7 4.2 7-4.2V4a1 1 0 0 0-1-1H2zm13 2.383l-4.758 2.855L15 11.114v-5.73zm-.034 6.878L9.271 8.82 8 9.583 6.728 8.82l-5.694 3.44A1 1 0 0 0 2 13h12a1 1 0 0 0 .966-.739zM1 11.114l4.758-2.876L1 5.383v5.73z"/>
+      </svg>
+      <br>
+      <br>
+      <p class="text-center" style="color: white;">yazanakq@gmail.com</p>
+      <p class="text-center" style="color: white;">yazanakq6@gmail.com</p>
+      <hr>
       </div>
     {% endif %}  
     </div>

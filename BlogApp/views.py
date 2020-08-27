@@ -74,3 +74,5 @@ def contact(request):
 
 	else:	
 		return render(request, 'contact.html')	
+
+		
