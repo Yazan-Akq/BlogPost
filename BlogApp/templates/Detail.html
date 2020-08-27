@@ -54,9 +54,10 @@ No Comments Yet... <br>
       <hr>
     {% endfor %}
   {% endif %}  
-{% if user.is_authenticated %}    
+{% if user.is_authenticated %}
+<br>    
     <div class="col-md-9">
-    <a style="color: grey;" href="{% url 'add_comment' model.pk %}">Add Comment</a> 
+    <a class="btn btn-secondary btn-sm" href="{% url 'add_comment' model.pk %}">Add Comment</a> 
   </div>  
 {% else %}
 <small>

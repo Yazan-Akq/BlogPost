@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BlogApp',
     'members',
+    
 ]
 
 MIDDLEWARE = [
@@ -138,8 +139,12 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 django_heroku.settings(locals())
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = '587'
-EMAIL_HOST_USER = 'yazanakq@gmail.com'
-EMAIL_HOST_PASSWORD = 'yazan@mss123'
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
+
+
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
 EMAIL_USE_TLS = True

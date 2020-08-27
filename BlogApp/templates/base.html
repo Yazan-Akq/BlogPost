@@ -21,16 +21,17 @@
     }
 
     .column {
-  float: left;
-  width: 23%;
-}
+      float: left;
+      width: 23%;
+    }
 
 /* Clear floats after the columns */
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
   </style>
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -168,7 +169,7 @@
         <hr>
         <a style="color: #888888" href="{% url 'Edit_Profile' %}">Edit Profile</a>
         <hr>
-        <a  href="{% url 'logout_user' %}">Logout</a>
+        <a style="color: #888888" href="{% url 'logout_user' %}">Logout</a>
         <hr>
       </div>
     {% else %}

@@ -9,7 +9,7 @@ urlpatterns = [
     path('delete/<list_id>', views.delete, name = 'delete'),
     path('edit/<int:pk>', EditView.as_view(), name = 'edit'),
     path('your_posts/', views.your_posts, name='your_posts'),
-	path('PostDetail/Comment/<int:pk>', CommentView.as_view(), name='add_comment'),
+	path('PostDetail/Comment/<int:pk>', views.CommentView, name='add_comment'),
 	path('About/', views.about, name='about'),
 	path('Contact/', views.contact, name='contact'),
 

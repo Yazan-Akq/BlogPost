@@ -42,15 +42,6 @@ def your_posts(request):
 	context = {'form':form}
 	return render(request, 'your_posts.html', context)
 
-class CommentView(CreateView):
-	model = Comment
-	form_class = CommentForm
-	template_name = 'add_comment.html'
-	#fields = '__all__'
-	def form_valid(self, form):
-		form.instance.post_id = self.kwargs['pk']
-		return super().form_valid(form)
-
 def about(request):
 	return render(request, 'about.html')	
 
@@ -67,6 +58,7 @@ def contact(request):
 			['yazanakq@gmail.com'],
 		)
 
+		send_email.send(fail_silently=fail_silently)
 		return render(request, 'contact.html', {'message_name':message_name})	
 
 
@@ -75,4 +67,16 @@ def contact(request):
 	else:	
 		return render(request, 'contact.html')	
 
-		
+def CommentView(request, pk):
+	post = get_object_or_404(List, pk=pk)
+
+	if request.method == "POST":
+		form = CommentForm(request.POST)
+		if form.is_valid():
+			comment = form.save(commit=False)
+			comment.post = post
+			comment.save()
+			return redirect('PostDetail', pk=post.pk)
+	else:
+		form = CommentForm()
+		return render(request, 'add_comment.html', {'form': form})
